@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}" lang="">
+    <head layout:fragment="pageHead">
+        <title>List todo</title> <!-- Static title or dynamic if needed -->
+        <meta charset="UTF-8">
+        <link th:href="@{/css/todo/list.css}" rel="stylesheet"/>
+    </head>
+    <body>
+        <div layout:fragment="${content}">
+                <h1 th:text="|${userName}'s Todo List|" class="todoList__title"></h1>
+                <a href="/todo/create">
+                    <button>Add Todo</button>
+                </a>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>User Name</th>
+                        <th>Content</th>
+                        <th>Target Date</th>
+                        <th>Status</th>
+                        <th>Feature</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${list}">
+                        <td th:text="${item.id}">1</td>
+                        <td th:text="${item.title}">Complete Project</td>
+                        <td th:text="${item.userName}">Test User</td>
+                        <td th:text="${item.content}">Finish the project proposal and submit it</td>
+                        <td th:text="${item.targetDate}">2024-12-31 15:00</td>
+                        <td th:text="${item.completed} ? 'Completed' : 'Not Completed'"
+                            th:class="${item.completed} ? 'completed' : 'not-completed'">Completed
+                        </td>
+                        <td>
+                            <a th:href="@{/todo/edit/{todoId}(todoId=${item.id})}" class="info btn">Edit</a>
+                            <a th:href="@{/todo/delete/{todoId}(todoId=${item.id})}" class="warning btn">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </body>
+</html>

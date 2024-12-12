@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Page Layout</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <th:block layout:fragment="${pageHead}"></th:block>  <!-- Replace the head content -->
+</head>
+<body>
+<th:block th:replace="fragments/header :: header">This is the header</th:block> <!-- Insert the header -->
+<main>
+    <div layout:fragment="${content}">This is block ne</div>  <!-- Replace the content area -->
+</main>
+</body>
+</html>

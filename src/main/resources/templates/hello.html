@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Beautiful World</title>
+    <!--css-->
+    <link th:href="@{/css/hello.css}" rel="stylesheet" />
+
+    <!--js-->
+    <script th:src="@{/js/hello.js}"></script>
+</head>
+<body>
+<div>
+    <h1 th:text="|Hello ${name}, Beautiful World!|"></h1>
+    <p>Welcome to a stunning webpage!</p>
+    <button onclick="showMessage()">Click Me</button>
+</div>
+</body>
+</html>

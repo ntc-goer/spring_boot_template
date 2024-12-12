@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/todo/create.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1>Add a TODO</h1>
+<div class="form-container">
+    <form action="/todo/create" method="POST" th:object="${todo}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <!-- Title field -->
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" th:field="*{title}" required>
+        <p th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error"></p>
+        <!-- Content field -->
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="4" th:field="*{content}"></textarea>
+        <p th:each="err : ${#fields.errors('content')}" th:text="${err}" class="error"></p>
+        <!-- Target Date field -->
+        <label for="targetDate">Target Date:</label>
+        <input
+                type="datetime-local"
+                id="targetDate"
+                name="targetDate"
+                th:field="*{targetDate}"
+        >
+        <p th:each="err : ${#fields.errors('targetDate')}" th:text="${err}" class="error"></p>
+
+        <!-- Completed field -->
+        <label for="completed">
+            <input type="checkbox" id="completed" name="completed" th:field="*{completed}">
+            Completed
+        </label>
+
+        <button type="submit">Add TODO</button>
+    </form>
+</div>
+</body>
+</html>
