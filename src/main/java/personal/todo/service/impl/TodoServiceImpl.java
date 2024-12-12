@@ -1,4 +1,4 @@
-package personal.todo.service;
+package personal.todo.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -7,6 +7,7 @@ import personal.todo.dto.TodoDto;
 import personal.todo.entity.TodoEntity;
 import personal.todo.exception.TodoNotFoundException;
 import personal.todo.repository.TodoRepository;
+import personal.todo.service.TodoService;
 
 import java.time.LocalDateTime;
 import java.util.List;
